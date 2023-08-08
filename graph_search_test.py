@@ -1,5 +1,5 @@
 import graph_tools as gt
-import graph_search_solution as gs
+import graph_search as gs
 
 #------------------------
 # Breadth-first traverse
