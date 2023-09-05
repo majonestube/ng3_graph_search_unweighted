@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import graphviz
 
 
 def read_maze_text(maze_file_path):
@@ -134,30 +133,3 @@ def plot_path(path):
         y,x = path[i+1]
         dy,dx = y-y0, x-x0
         plt.arrow(x=x0,y=y0,dx=0.8*dx,dy=0.8*dy,head_width=0.1)
-
-
-def dict_to_dot(adj_dict, directed=False):
-    """ Create graphviz graph based on adjancency list (dictionary) 
-    
-    # Input parameters:
-    adj_dict     - Adjacency list as dictionary
-                   key = node name
-                   value = iterable with neighbor node names
-    directed     - Boolean, True for directed graph, False for undirected.
-    
-    # Returns:
-    graph_dot    - Graphviz graph object (Graph or Digraph)
-    
-    """ 
-    
-    if directed:
-        graph_dot = graphviz.Digraph(strict=True)
-    else:
-        graph_dot = graphviz.Graph(strict=True)
-    
-    for from_vertex in adj_dict.keys():
-        for to_vertex in adj_dict[from_vertex]:           # Assume dict of iterables
-            graph_dot.edge(tail_name = str(from_vertex),
-                        head_name = str(to_vertex))
-    
-    return graph_dot
